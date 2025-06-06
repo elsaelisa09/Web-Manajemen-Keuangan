@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 98%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 98%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 262.1 83.3% 57.8%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+      radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+    position: relative;
+  }
+
+  body::before {
+    content: '💰 🎯 📊 💸 🐷 💳 ✨ 🌟 💫 🎉 🔥 ⭐ 🎨 🌈 🦄 💎 🎪 🎭 🎸 🎵';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
+    line-height: 4rem;
+    letter-spacing: 3rem;
+    word-spacing: 2rem;
+    overflow: hidden;
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .dark body::before {
+    opacity: 0.05;
+  }
+
+  .emoji-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .emoji-bg::before {
+    content: '💰 🎯 📊 💸 🐷 💳 ✨ 🌟 💫 🎉';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    font-size: 1.5rem;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+    line-height: 3rem;
+    letter-spacing: 2rem;
+    word-spacing: 1.5rem;
+    animation: float 15s ease-in-out infinite;
+  }
+
+  .dark .emoji-bg::before {
+    opacity: 0.06;
+  }
+
+  .header {
+    @apply bg-gray-100;
+  }
+  .dark .header {
+    @apply bg-gray-900 bg-opacity-95;
+  }
+}
+
+@layer utilities {
+  .gradient-bg {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
+  }
+  
+  .gradient-bg-light {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #ffffff 100%);
+  }
+
+  .dark .gradient-bg {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%);
+  }
+
+  .dark .gradient-bg-light {
+    background: linear-gradient(135deg, #334155 0%, #475569 50%, #334155 100%);
+  }
+
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(2deg); }
+    50% { transform: translateY(-5px) rotate(0deg); }
+    75% { transform: translateY(-15px) rotate(-2deg); }
+  }
+
+  .white-card {
+    @apply bg-white/95 backdrop-blur-sm border border-gray-100 shadow-lg;
+  }
+
+  .dark .white-card {
+    @apply bg-gray-800/95 backdrop-blur-sm border border-gray-700 shadow-lg;
+  }
+
+  .interactive-card {
+    @apply white-card hover:shadow-xl hover:scale-105 transform transition-all duration-300 emoji-bg;
+  }
+}
